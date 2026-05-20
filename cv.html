@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Professional CV - Md. Mansurul Haque</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #efefef;
+      padding: 30px;
+      color: #444;
+    }
+
+    .action-buttons {
+      width: 900px;
+      margin: auto;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .action-buttons button {
+      padding: 10px 18px;
+      border: none;
+      background: #3344aa;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .action-buttons button:hover {
+      background: #1f2d7a;
+    }
+
+    .cv-wrapper {
+      width: 900px;
+      margin: auto;
+      background: white;
+      padding: 32px 40px;
+      font-size: 11px;
+      line-height: 1.5;
+      color: #333;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      padding-bottom: 14px;
+      border-bottom: 1.5px solid #444;
+    }
+
+    .info h1 {
+      color: #3747a6;
+      font-size: 24px;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .info p {
+      margin-bottom: 5px;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      line-height: 1.5;
+    }
+
+    .info span.icon {
+      width: 16px;
+      display: inline-block;
+      text-align: center;
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+
+    .profile img {
+      width: 115px;
+      height: 135px;
+      object-fit: cover;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .section {
+      margin-top: 16px;
+    }
+
+    .section-title {
+      background: #dddddd;
+      color: #555;
+      padding: 5px 10px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 8px;
+      letter-spacing: 0.3px;
+    }
+
+    .section p {
+      font-size: 11px;
+      line-height: 1.55;
+      text-align: justify;
+    }
+
+    .experience-summary {
+      font-size: 11px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    .experience-list {
+      list-style: decimal;
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .experience-list > li {
+      margin-bottom: 14px;
+      padding-left: 6px;
+      font-size: 11px;
+      line-height: 1.55;
+      text-align: left;
+    }
+
+    .experience-list > li:last-child {
+      margin-bottom: 0;
+    }
+
+    .exp-role {
+      font-weight: bold;
+      font-size: 11px;
+      margin-bottom: 2px;
+    }
+
+    .exp-dates {
+      font-size: 11px;
+      margin-bottom: 2px;
+    }
+
+    .exp-company {
+      font-weight: bold;
+      font-size: 11px;
+      margin-bottom: 2px;
+    }
+
+    .exp-location {
+      font-size: 11px;
+      margin-bottom: 6px;
+    }
+
+    .exp-label {
+      font-weight: bold;
+      font-size: 11px;
+      margin-top: 4px;
+      margin-bottom: 2px;
+    }
+
+    .exp-text {
+      font-size: 11px;
+      line-height: 1.55;
+      text-align: left;
+    }
+
+    .exp-duties {
+      margin: 4px 0 0 18px;
+      padding: 0;
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+    .exp-duties li {
+      margin-bottom: 2px;
+    }
+
+    .section-table-block .section-title,
+    .section-career-block .section-title {
+      margin-bottom: 0;
+    }
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .cv-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10px;
+      margin-bottom: 0;
+      border: 1px solid #999;
+    }
+
+    .cv-table th,
+    .cv-table td {
+      border: 1px solid #999;
+      padding: 5px 4px;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 1.4;
+    }
+
+    .cv-table th {
+      font-weight: bold;
+      background: #fff;
+      color: #333;
+    }
+
+    .cv-table td {
+      color: #333;
+    }
+
+    .career-info {
+      font-size: 11px;
+      line-height: 1.8;
+      padding: 4px 0 2px;
+    }
+
+    .career-info-row {
+      display: grid;
+      grid-template-columns: 200px 12px 1fr;
+      gap: 0 4px;
+      margin-bottom: 2px;
+    }
+
+    .career-info-row .label {
+      text-align: left;
+    }
+
+    .career-info-row .colon {
+      text-align: center;
+    }
+
+    .career-info-row .value {
+      text-align: left;
+    }
+
+    .skill-table .skill-title-row th {
+      background: #dddddd;
+      color: #555;
+      font-size: 13px;
+      font-weight: bold;
+      text-align: left;
+      padding: 5px 10px;
+    }
+
+    .skill-table .skill-fields {
+      width: 32%;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .skill-table .skill-fields ul {
+      margin: 0;
+      padding-left: 18px;
+      list-style-type: disc;
+    }
+
+    .skill-table .skill-fields li {
+      margin-bottom: 2px;
+      text-align: left;
+    }
+
+    .skill-table .skill-desc {
+      text-align: justify;
+      vertical-align: top;
+      line-height: 1.55;
+    }
+
+    .skill-table .skill-desc p {
+      margin: 0;
+      text-align: justify;
+    }
+
+    .text-section {
+      font-size: 11px;
+      line-height: 1.55;
+      text-align: left;
+    }
+
+    .text-section .sub-title {
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .text-section ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .text-section ol li {
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    .text-section ol li:last-child {
+      margin-bottom: 0;
+    }
+
+    .text-section .item-title {
+      font-weight: bold;
+    }
+
+    .text-section a {
+      color: #333;
+      word-break: break-all;
+    }
+
+    .language-table {
+      max-width: 65%;
+    }
+
+    .personal-info .career-info-row {
+      grid-template-columns: 180px 12px 1fr;
+    }
+
+    .reference-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      font-size: 11px;
+      line-height: 1.8;
+      padding: 4px 0 2px;
+    }
+
+    .reference-col:first-child {
+      border-right: 1px solid #ccc;
+      padding-right: 24px;
+    }
+
+    .reference-col:last-child {
+      padding-left: 24px;
+    }
+
+    .reference-col .career-info-row {
+      grid-template-columns: 110px 12px 1fr;
+    }
+
+    @media(max-width: 950px) {
+      .cv-wrapper,
+      .action-buttons {
+        width: 100%;
+      }
+    }
+
+    @media(max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      .cv-wrapper {
+        padding: 20px;
+      }
+
+      .header {
+        flex-direction: column-reverse;
+        align-items: center;
+      }
+
+      .cv-wrapper {
+        font-size: 10px;
+      }
+
+      .info h1 {
+        text-align: center;
+        font-size: 20px;
+      }
+
+      .info p,
+      .info span.icon {
+        font-size: 10px;
+      }
+
+      .section-title {
+        font-size: 12px;
+      }
+
+      .section p,
+      .experience-summary,
+      .experience-list > li,
+      .exp-role,
+      .exp-dates,
+      .exp-company,
+      .exp-location,
+      .exp-label,
+      .exp-text,
+      .exp-duties {
+        font-size: 10px;
+      }
+
+      .cv-table {
+        font-size: 9px;
+      }
+
+      .cv-table th,
+      .cv-table td {
+        padding: 4px 2px;
+      }
+
+      .career-info {
+        font-size: 10px;
+      }
+
+      .career-info-row {
+        grid-template-columns: 1fr 12px 1fr;
+      }
+
+      .reference-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .reference-col:first-child {
+        border-right: none;
+        border-bottom: 1px solid #ccc;
+        padding-right: 0;
+        padding-bottom: 16px;
+        margin-bottom: 16px;
+      }
+
+      .reference-col:last-child {
+        padding-left: 0;
+      }
+
+      .personal-info .career-info-row,
+      .reference-col .career-info-row {
+        grid-template-columns: 1fr 12px 1fr;
+      }
+
+      .profile img {
+        width: 100px;
+        height: 118px;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .action-buttons {
+        display: none;
+      }
+
+      .cv-wrapper {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="action-buttons">
+    <button onclick="downloadPDF()">Download PDF</button>
+    <button onclick="downloadWord()">Download Word</button>
+  </div>
+
+  <div class="cv-wrapper" id="cv">
+
+    <div class="header">
+
+      <div class="info">
+        <h1>Md. Mansurul Haque</h1>
+
+        <p>
+          <span class="icon">📍</span>
+          41/33, 1-Chan Miya Housing, Mohammadpur Housing, Mohammadpur, Dhaka 1207
+        </p>
+
+        <p>
+          <span class="icon">📱</span>
+          01784939236
+        </p>
+
+        <p>
+          <span class="icon">✉️</span>
+          haquemansurul1997@gmail.com
+        </p>
+
+        <p>
+          <span class="icon">in</span>
+          linkedin.com/in/mansurul-haque-0768771a7/
+        </p>
+
+        <p>
+          <span class="icon">🐙</span>
+          github.com/Mansurul1997
+        </p>
+      </div>
+
+      <div class="profile">
+        <img src="https://i.ibb.co/0jqHpnp/profile.png" alt="Profile Image">
+      </div>
+
+    </div>
+
+
+    <div class="section">
+      <div class="section-title">Career Objective</div>
+
+      <p>
+        To build a professional career as a Full Stack Developer where I can apply my programming skills,
+        learn new technologies, and contribute to organizational success.
+      </p>
+    </div>
+
+
+    <div class="section">
+      <div class="section-title">Career Summary</div>
+
+      <p>
+        A Computer Science and Engineering graduate from United International University,
+        equipped with web development skills in HTML and CSS, alongside effective communication,
+        leadership, and management capabilities. Experienced in maintaining and optimizing projects,
+        currently contributes to Youth for the Better Future Society, where a commitment to community-focused
+        initiatives showcases both technical and social impact. This professional approach balances a dedication
+        to personal growth.
+      </p>
+    </div>
+
+
+    <div class="section">
+      <div class="section-title">Special Qualification</div>
+
+      <p>
+        Possesses a unique blend of technical skills and interpersonal strengths, including HTML/CSS proficiency,
+        reliable project maintenance, and collaborative communication. A history of leadership in social projects
+        underscores adaptability.
+      </p>
+    </div>
+
+
+    <div class="section">
+      <div class="section-title">Experience</div>
+
+      <p class="experience-summary"><strong>Total Year of Experience:</strong> 1.8 yrs</p>
+
+      <ol class="experience-list">
+
+        <li>
+          <div class="exp-role">Software engineer (1.3 yrs)</div>
+          <div class="exp-dates">(04 Feb, 2025 - Continuing)</div>
+          <div class="exp-company">Retina</div>
+
+          <div class="exp-label">Area of Expertise</div>
+          <p class="exp-text">
+            Backend (1.3 yrs), Front End (1.3 yrs), Team Leader (Software) (6 months)
+          </p>
+
+          <div class="exp-label">Duties/Responsibilities</div>
+          <p class="exp-text">Full stack Developer, Team Lead</p>
+        </li>
+
+        <li>
+          <div class="exp-role">Full Stack Developer (0.2 yrs)</div>
+          <div class="exp-dates">(01 Dec, 2024 - 31 Jan, 2025)</div>
+          <div class="exp-company">Innovation21</div>
+          <div class="exp-location">Katabon, Dhaka.</div>
+
+          <div class="exp-label">Area of Expertise</div>
+          <p class="exp-text">
+            HTML &amp; CSS (1 month), Python Django REST (1 month), React.js. (1 month)
+          </p>
+
+          <div class="exp-label">Duties/Responsibilities</div>
+          <ol class="exp-duties">
+            <li>Develop and maintain web applications using React.js and Django</li>
+            <li>Develop and integrate RESTful APIs</li>
+            <li>Optimize application performance and scalability</li>
+            <li>Collaborate with cross-functional teams for project success</li>
+            <li>Debugging, testing, and deploying applications</li>
+          </ol>
+        </li>
+
+        <li>
+          <div class="exp-role">Lead Generation Officer (0.3 yrs)</div>
+          <div class="exp-dates">(27 Aug, 2024 - 30 Nov, 2024)</div>
+          <div class="exp-company">Munshe-IT</div>
+          <div class="exp-location">Jamtola Bazar, Shewrapara, Dhaka</div>
+
+          <div class="exp-label">Area of Expertise</div>
+          <p class="exp-text">
+            Database maintenance (3 months), Lead Genaretion (3 months), Software Management (3 months)
+          </p>
+
+          <div class="exp-label">Duties/Responsibilities</div>
+          <ol class="exp-duties">
+            <li>Software Management</li>
+            <li>Maintain software database</li>
+            <li>Research and identify potential clients</li>
+            <li>Generate leads through various online platforms</li>
+            <li>Collect and verify contact information</li>
+            <li>Maintain lead databases and CRM</li>
+            <li>Collaborate with the sales team for conversions</li>
+          </ol>
+        </li>
+
+      </ol>
+    </div>
+
+
+    <div class="section section-table-block">
+      <div class="section-title">Academic / Education</div>
+      <div class="table-wrap">
+        <table class="cv-table" border="1" cellpadding="4" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Exam Title</th>
+              <th>Concentration/Major</th>
+              <th>Institute </th>
+              <th>Result</th>
+              <th>Pas.Year</th>
+              <th>Duration</th>
+              <th>Achievement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Bachelor of Science (BSc)</td>
+              <td>Computer Science &amp; Engineering</td>
+              <td>United International University</td>
+              <td>3.02 out of 4</td>
+              <td>2024</td>
+              <td>4</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>HSC</td>
+              <td>Science</td>
+              <td>Queens College</td>
+              <td>3.58 out of 5</td>
+              <td>2018</td>
+              <td>2</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>SSC</td>
+              <td>Science</td>
+              <td>Thakurgaon Govt Boys High School</td>
+              <td>5 out of 5</td>
+              <td>2018</td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section section-table-block">
+      <div class="section-title">Training</div>
+      <div class="table-wrap">
+        <table class="cv-table" border="1" cellpadding="4" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Training Title</th>
+              <th>Topic</th>
+              <th>Institute</th>
+              <th>Country</th>
+              <th>Location</th>
+              <th>Year</th>
+              <th>Duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Development</td>
+              <td>Next.js</td>
+              <td>Center for Development of IT Professionals - CDIP</td>
+              <td>Bangladesh</td>
+              <td>United International University</td>
+              <td>2023</td>
+              <td>4 Months</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section section-table-block">
+      <div class="section-title">Professional Qualification</div>
+      <div class="table-wrap">
+        <table class="cv-table" border="1" cellpadding="4" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Certification</th>
+              <th>Institute</th>
+              <th>Location</th>
+              <th>From</th>
+              <th>To</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Digital Marketing</td>
+              <td>SR DREAM IT</td>
+              <td>Online</td>
+              <td>01 Oct, 2021</td>
+              <td>05 Jan, 2022</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section section-career-block">
+      <div class="section-title">Career and Application Information</div>
+
+      <div class="career-info">
+        <div class="career-info-row">
+          <span class="label">Preferred Job Category</span>
+          <span class="colon">:</span>
+          <span class="value">Engineer/Architect</span>
+        </div>
+        <div class="career-info-row">
+          <span class="label">Looking For</span>
+          <span class="colon">:</span>
+          <span class="value">Mid Level Job</span>
+        </div>
+        <div class="career-info-row">
+          <span class="label">Present Salary</span>
+          <span class="colon">:</span>
+          <span class="value">Tk. 30000</span>
+        </div>
+        <div class="career-info-row">
+          <span class="label">Expected Salary</span>
+          <span class="colon">:</span>
+          <span class="value">Tk. 0</span>
+        </div>
+        <div class="career-info-row">
+          <span class="label">Preferred District</span>
+          <span class="colon">:</span>
+          <span class="value"></span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="section section-table-block">
+      <div class="table-wrap">
+        <table class="cv-table skill-table" border="1" cellpadding="4" cellspacing="0">
+          <thead>
+            <tr class="skill-title-row">
+              <th colspan="2">Skill</th>
+            </tr>
+            <tr>
+              <th>Fields of Skill</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="skill-fields">
+                <ul>
+                  <li>Software Development</li>
+                  <li>C++</li>
+                  <li>HTML &amp; CSS</li>
+                  <li>JavaScript</li>
+                  <li>Docker</li>
+                  <li>AWS</li>
+                  <li>MySQL</li>
+                  <li>Mongo DB</li>
+                  <li>Communication Skills</li>
+                  <li>Leadership</li>
+                  <li>Management</li>
+                  <li>Microsoft Excel</li>
+                  <li>Microsoft PowerPoint</li>
+                  <li>Microsoft Word</li>
+                </ul>
+              </td>
+              <td class="skill-desc">
+                <p>
+                  I have developed strong expertise in software development, with hands-on experience in C++, HTML,
+                  CSS, and JavaScript for building efficient and responsive applications. My skills extend to database
+                  management using MySQL and MongoDB, as well as cloud and container technologies like AWS and Docker.
+                  Alongside technical proficiency, I am adept in communication, leadership, and management, ensuring
+                  effective teamwork and project delivery. I am also skilled in Microsoft Office tools—Word, Excel, and
+                  PowerPoint—for documentation, analysis, and presentations. This combination of technical and
+                  professional skills enables me to design, implement, and manage scalable solutions while guiding teams
+                  toward success.
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <div class="section">
+      <div class="section-title">Accomplishment</div>
+      <div class="text-section">
+        <div class="sub-title">Portfolio</div>
+        <ol>
+          <li>
+            <span class="item-title">Mansurul haque - Full Stack Developer</span><br>
+            <strong>URL:</strong>
+            <a href="https://portfolio-mansurul.vercel.app/" target="_blank" rel="noopener noreferrer">
+              https://portfolio-mansurul.vercel.app/
+            </a><br>
+            <strong>Description:</strong>
+            A passionate Fullstack Developer specializing in scalable web applications using Next.js, React,
+            TypeScript, and Django. Experienced in leading teams, managing projects, and delivering innovative
+            solutions across education, disaster management, and IT platforms.
+          </li>
+        </ol>
+      </div>
+    </div>
+
+
+    <div class="section">
+      <div class="section-title">Extra Curricular Activities</div>
+      <div class="text-section">
+        <ol>
+          <li>
+            <span class="item-title">Leadership and Entrepreneurship Club:</span>
+            Joining "App Forum" these clubs can help students build leadership skills and entrepreneurial thinking.
+          </li>
+          <li>
+            <span class="item-title">Volunteering:</span>
+            Participating in "Youth For Better Future Society" social or community work develops leadership, teamwork,
+            and empathy.
+          </li>
+          <li>
+            <span class="item-title">Sports and Fitness Club:</span>
+            Activities like cricket, badminton, and table tennis help students stay fit and learn teamwork.
+          </li>
+        </ol>
+      </div>
+    </div>
+
+
+    <div class="section section-table-block">
+      <div class="section-title">Language Proficiency</div>
+      <div class="table-wrap">
+        <table class="cv-table language-table" border="1" cellpadding="4" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Language</th>
+              <th>Reading</th>
+              <th>Writing</th>
+              <th>Speaking</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Bangla</td>
+              <td>High</td>
+              <td>High</td>
+              <td>High</td>
+            </tr>
+            <tr>
+              <td>English</td>
+              <td>High</td>
+              <td>High</td>
+              <td>High</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <div class="section section-career-block">
+      <div class="section-title">Personal Details</div>
+      <div class="career-info personal-info">
+        <div class="career-info-row">
+          <span class="label">Father's Name</span>
+          <span class="colon">:</span>
+          <span class="value">Md. Zahurul Haque</span>
+        </div>
+        <div class="career-info-row">
+          <span class="label">Mother's Name</span>
+          <span class="colon">:</span>
+          <span class="value">Mst. Afroza Begum</span>
+        </div>
+        <div class="career-info-row">
+          <span class="label">Date of Birth</span>
+          <span class="colon">:</span>
+          <span class="value">06 Aug, 2001</span>
+        </div>
+        <div class="career-info-row">
+          <span class="label">Gender</span>
+          <span class="colon">:</span>
+          <span class="value">Male</span>
+        </div>
+        <div class="career-info-row">
+          <span class="label">Marital Status</span>
+          <span class="colon">:</span>
+          <span class="value">Married</span>
+        </div>
+        <div class="career-info-row">
+          <span class="label">Nationality</span>
+          <span class="colon">:</span>
+          <span class="value">Bangladeshi</span>
+        </div>
+        <div class="career-info-row">
+          <span class="label">National Id No.</span>
+          <span class="colon">:</span>
+          <span class="value">8258499931</span>
+        </div>
+        <div class="career-info-row">
+          <span class="label">Religion</span>
+          <span class="colon">:</span>
+          <span class="value">Islam</span>
+        </div>
+        <div class="career-info-row">
+          <span class="label">Permanent Address</span>
+          <span class="colon">:</span>
+          <span class="value">Islambug, Thakurgaon Sadar, Thakurgaon Sadar, Thakurgaon 5100</span>
+        </div>
+        <div class="career-info-row">
+          <span class="label">Current Location</span>
+          <span class="colon">:</span>
+          <span class="value">41/33, 1-Chan Miya Housing, Mohammadpur Housing, Mohammadpur, Dhaka 1207</span>
+        </div>
+        <div class="career-info-row">
+          <span class="label">Blood Group</span>
+          <span class="colon">:</span>
+          <span class="value">A+</span>
+        </div>
+        <div class="career-info-row">
+          <span class="label">Height (Meter)</span>
+          <span class="colon">:</span>
+          <span class="value">2</span>
+        </div>
+        <div class="career-info-row">
+          <span class="label">Weight (Kg)</span>
+          <span class="colon">:</span>
+          <span class="value">53</span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="section">
+      <div class="section-title">Reference</div>
+      <div class="reference-grid">
+        <div class="reference-col">
+          <div class="career-info">
+            <div class="career-info-row">
+              <span class="label">Name</span>
+              <span class="colon">:</span>
+              <span class="value">Prof. Dr. Mohammad Nurul Huda</span>
+            </div>
+            <div class="career-info-row">
+              <span class="label">Organization</span>
+              <span class="colon">:</span>
+              <span class="value">United International University</span>
+            </div>
+            <div class="career-info-row">
+              <span class="label">Designation</span>
+              <span class="colon">:</span>
+              <span class="value">Dept. Head of Computer Science and Engineering</span>
+            </div>
+            <div class="career-info-row">
+              <span class="label">Email</span>
+              <span class="colon">:</span>
+              <span class="value">mnh@cse.uiu.ac.bd</span>
+            </div>
+            <div class="career-info-row">
+              <span class="label">Relation</span>
+              <span class="colon">:</span>
+              <span class="value">Academic</span>
+            </div>
+          </div>
+        </div>
+        <div class="reference-col">
+          <div class="career-info">
+            <div class="career-info-row">
+              <span class="label">Name</span>
+              <span class="colon">:</span>
+              <span class="value">Dr. Suman Ahmmed</span>
+            </div>
+            <div class="career-info-row">
+              <span class="label">Organization</span>
+              <span class="colon">:</span>
+              <span class="value">United International University</span>
+            </div>
+            <div class="career-info-row">
+              <span class="label">Designation</span>
+              <span class="colon">:</span>
+              <span class="value">Associate Professor, Dept. of CSE</span>
+            </div>
+            <div class="career-info-row">
+              <span class="label">Email</span>
+              <span class="colon">:</span>
+              <span class="value">suman@cse.uiu.ac.bd</span>
+            </div>
+            <div class="career-info-row">
+              <span class="label">Relation</span>
+              <span class="colon">:</span>
+              <span class="value">Academic</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <script>
+
+    function downloadPDF() {
+
+      const element = document.getElementById('cv');
+
+      const options = {
+        margin: 0.3,
+        filename: 'Mansurul_Haque_CV.pdf',
+        image: { type: 'jpeg', quality: 1 },
+        html2canvas: { scale: 2 },
+        jsPDF: {
+          unit: 'in',
+          format: 'a4',
+          orientation: 'portrait'
+        }
+      };
+
+      html2pdf().set(options).from(element).save();
+    }
+
+
+    function downloadWord() {
+
+      const content = document.getElementById('cv').innerHTML;
+
+      const html = `
+        <html>
+          <head>
+            <meta charset="utf-8">
+            <title>CV</title>
+          </head>
+          <body>
+            ${content}
+          </body>
+        </html>
+      `;
+
+      const blob = new Blob(['\ufeff', html], {
+        type: 'application/msword'
+      });
+
+      const url = URL.createObjectURL(blob);
+
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'Mansurul_Haque_CV.doc';
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+  </script>
+
+</body>
+</html>
